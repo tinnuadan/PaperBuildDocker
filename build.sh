@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rootdir=/app/
+cd $rootdir
 
 git clone https://github.com/tinnuadan/PaperBuild.git
 cp config.ini PaperBuild/

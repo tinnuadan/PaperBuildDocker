@@ -21,9 +21,6 @@ RUN git config --global user.name "John Doe"
 COPY build.sh /app/build.sh
 RUN chmod +x /app/build.sh
 
-COPY startup.sh /app/startup.sh
-RUN chmod +x /app/startup.sh
-
 # Things for building
 RUN mkdir app/build
 COPY config.ini /app/config.ini
