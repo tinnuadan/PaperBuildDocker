@@ -14,13 +14,19 @@ cp PaperBuild/build . -ur
 #remove temporary build files
 rm -rv PaperBuild/build
 
-#remove all but n builds
+#remove all but n builds and link latest
 n=10
 cd build
 for branch in *; do
     if $(test -d $branch); then
         cd $branch
-        ls -tp | grep -v '/$' | tail -n +$(expr $n + 1) | xargs -I {} rm -- {}    
+        # remove builds
+        ls -tp | grep -v '/$' | grep -v '^l' | tail -n +$(expr $n + 1) | xargs -I {} rm -- {}
+
+        #create symbolic link to latest
+        latest=$(ls *_* -r1 | head -n 1)
+        ln=${latest%_*}-latest.jar
+  
         cd ..
     fi
 done
