@@ -25,7 +25,9 @@ for branch in *; do
 
         #create symbolic link to latest
         latest=$(ls *_* -r1 | head -n 1)
-        ln=${latest%_*}-latest.jar
+        vln=${latest%_*}-latest.jar
+        echo "Linking $vln to $latest"
+        ln -sf $latest $vln
   
         cd ..
     fi
